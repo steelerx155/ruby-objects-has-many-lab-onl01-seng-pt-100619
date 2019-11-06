@@ -9,17 +9,14 @@ class Author
     @@all << self
   end
   
-    def self.all
+  def self.all
     @@all
   end
+ 
   
-  def save
-    @@all << self
-  end
-  
-  def add_post(name)
-    posts = Post.new(name)
-    posts.author = self
+  def add_post(post)
+    # posts = Post.new(post)
+    post.author = self
   end
   
   
@@ -27,5 +24,12 @@ class Author
     Post.all.select {|post| post.author == self}
   end  
   
+  def add_post_by_title(title)
+    post = Post.new(title)
+    post.author = self
+  end
   
-end  
+  def self.post_count
+    Post.all.count
+ end  
+end 
